@@ -1,0 +1,25 @@
+port: 9000
+# log level: error / warn / info / debug / trace, default level is info
+log_level: info
+
+redis:
+  url: redis://localhost:6379
+
+rules:
+  # Blockstream
+  - name: Blockstream
+    path: "blockstream/api/blocks/0"
+    upstream: "https://blockstream.info/api/blocks/0"
+    policy: "policy_ttl_60"
+
+policies:
+  - name: policy_ttl_60
+    type: TTL
+    metadata_db: redis
+    storage: in-mem
+    timeout: 30
+
+storages:
+  - name: in-mem
+    type: MEM
+    config: Mem
