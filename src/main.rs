@@ -39,7 +39,7 @@ lazy_static::lazy_static! {
 
 #[tokio::main]
 async fn main() {
-    let matches = App::new("mirror-cache")
+    let matches = App::new("reverse-proxy-cache")
         .version(crate_version!())
         .arg(
             Arg::with_name("config")
